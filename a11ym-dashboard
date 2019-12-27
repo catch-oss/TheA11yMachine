@@ -93,7 +93,7 @@ function computeAllStatistics() {
     var stats = [];
 
     glob
-        .sync(program.root + '/*/statistics.json')
+        .sync(program.root + '/statistics.json')
         .forEach(
             function (file) {
                 stats.push(
