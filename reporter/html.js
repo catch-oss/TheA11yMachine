@@ -94,6 +94,7 @@ function reportResults(results, url) {
 
     results[0].issues.forEach(
         function(result, index) {
+            console.dir(result);
 
             if (true === /Principle.+Guideline/.test(result.code)) {
                 result.noteCodes = result.code.split('.')[4].split(',');
@@ -141,7 +142,7 @@ function reportResults(results, url) {
         warningPercentage: warningPercentage,
         noticeCount      : noticeCount,
         noticePercentage : noticePercentage,
-        results          : results,
+        results          : results[0],
         noteCodes        : noteCodes,
         css              : {
             common: fs.readFileSync(__dirname + '/../view/common.css', {encoding: 'utf-8'})
