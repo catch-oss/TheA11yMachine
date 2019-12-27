@@ -93,8 +93,9 @@ function reportResults(results, url) {
     var warningCount = 0;
     var noticeCount  = 0;
 
-    results.issues.forEach(
+    results.results.forEach(
         function(result, index) {
+            console.dir(result);
             if (true === /Principle.+Guideline/.test(result.code)) {
                 result.noteCodes = result.code.split('.')[4].split(',');
             } else {
@@ -182,15 +183,15 @@ function upperCaseFirst(string) {
 }
 
 function isError(result) {
-    return (result.level === 'error');
+    return (result.type === 'error');
 }
 
 function isNotice(result) {
-    return (result.level === 'notice');
+    return (result.type === 'notice');
 }
 
 function isWarning(result) {
-    return (result.level === 'warning');
+    return (result.type === 'warning');
 }
 
 // Polyfill from
