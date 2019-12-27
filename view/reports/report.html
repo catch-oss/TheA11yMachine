@@ -225,7 +225,7 @@
 
         document.querySelector('#results').innerHTML =
             Object
-                .keys(results)
+                .keys(results.issues)
                 .sort(
                     function (a, b) {
                         var categoryA = getCategoryOf(a);
@@ -352,7 +352,7 @@
   <ul id="results">
     <%
       _.each(
-          results,
+          results.issues,
           function (result, index) {
               %>
               <li class="result" data-result-type="<%- result.type %>" data-result-level="<%- result.level %>" data-result-index="<%- index %>">
