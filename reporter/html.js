@@ -92,10 +92,9 @@ function reportResults(results, url) {
     var warningCount = 0;
     var noticeCount  = 0;
 
+    console.dir(results);
     results[0].issues.forEach(
         function(result, index) {
-            console.dir(result);
-
             if (true === /Principle.+Guideline/.test(result.code)) {
                 result.noteCodes = result.code.split('.')[4].split(',');
             } else {
