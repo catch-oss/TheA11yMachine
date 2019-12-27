@@ -141,7 +141,7 @@ function reportResults(results, url) {
         warningPercentage: warningPercentage,
         noticeCount      : noticeCount,
         noticePercentage : noticePercentage,
-        results          : results[0],
+        results          : results,
         noteCodes        : noteCodes,
         css              : {
             common: fs.readFileSync(__dirname + '/../view/common.css', {encoding: 'utf-8'})
