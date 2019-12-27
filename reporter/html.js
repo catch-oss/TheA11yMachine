@@ -85,6 +85,7 @@ function reportError(message) {
 }
 
 function reportResults(results, url) {
+    console.dir(results);
     var hash = crypto.createHash('sha1').update(url).digest('hex');
 
     var noteCodes    = {};
