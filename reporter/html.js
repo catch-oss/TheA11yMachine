@@ -94,7 +94,7 @@ function reportResults(results, url) {
 
     results[0].issues.forEach(
         function(result, index) {
-            console.dir(result);
+
             if (true === /Principle.+Guideline/.test(result.code)) {
                 result.noteCodes = result.code.split('.')[4].split(',');
             } else {
@@ -166,6 +166,8 @@ function reportResults(results, url) {
         }
     );
     indexHtmlStream.write(indexReportDotHtml(options));
+    console.dir(statistics);
+    console.log(outputDirectory);
     fs.writeFileSync(
         outputDirectory + '/statistics.json',
         JSON.stringify(statistics),
