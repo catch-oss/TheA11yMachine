@@ -93,7 +93,7 @@ function reportResults(results, url) {
     var warningCount = 0;
     var noticeCount  = 0;
 
-    results.forEach(
+    results.issues.forEach(
         function(result, index) {
             console.dir(result);
             if (true === /Principle.+Guideline/.test(result.code)) {
