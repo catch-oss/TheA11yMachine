@@ -85,7 +85,7 @@ function reportError(message) {
 }
 
 function reportResults(results, url) {
-    console.dir(results);
+    console.dir(results[0]);
     var hash = crypto.createHash('sha1').update(url).digest('hex');
 
     var noteCodes    = {};
@@ -93,7 +93,7 @@ function reportResults(results, url) {
     var warningCount = 0;
     var noticeCount  = 0;
 
-    results.issues.forEach(
+    results[0].issues.forEach(
         function(result, index) {
             console.dir(result);
             if (true === /Principle.+Guideline/.test(result.code)) {
