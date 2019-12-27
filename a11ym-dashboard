@@ -142,7 +142,8 @@ if (undefined === program.staticOutput) {
 
                     response.end(computeIndex());
                 } else if (matches = url.pathname.match(reportRegex)) {
-                    var index = program.root + '/' + matches[1] + '/' + matches[2];
+                    // var index = program.root + '/' + matches[1] + '/' + matches[2];
+                    var index = program.root + '/' + matches[2];
 
                     fs.access(
                         index,
