@@ -117,7 +117,7 @@ function reportResults(results, url) {
     );
 
     noteCodes = Object.keys(noteCodes);
-    console.dir(noteCodes);
+
     var total             = Math.max(errorCount + warningCount + noticeCount, 1);
     var errorPercentage   = (errorCount * 100) / total;
     var warningPercentage = (warningCount * 100) / total;
@@ -155,6 +155,9 @@ function reportResults(results, url) {
         warningCount: warningCount,
         noticeCount : noticeCount
     });
+
+    console.dir(options);
+    console.dir(statistics);
 
     fs.writeFileSync(
         outputDirectory + '/' + hash + '.html',
