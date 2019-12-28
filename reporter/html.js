@@ -156,29 +156,34 @@ function reportResults(results, url) {
         noticeCount : noticeCount
     });
 
-    console.dir(options);
-    console.dir(statistics);
+    try{
+        fs.writeFileSync(
+            outputDirectory + '/' + hash + '.html',
+            reportDotHtml(options),
+            {
+                flag    : 'w',
+                encoding: 'utf8'
+            }
+        );
+    } catch(err) {
+        console.error(err);
+    }
 
-    fs.writeFileSync(
-        outputDirectory + '/' + hash + '.html',
-        reportDotHtml(options),
-        {
-            flag    : 'w',
-            encoding: 'utf8'
-        }
-    );
     indexHtmlStream.write(indexReportDotHtml(options));
-    console.dir(statistics);
-    console.log(outputDirectory);
-    fs.writeFileSync(
-        outputDirectory + '/statistics.json',
-        JSON.stringify(statistics),
-        {
-            flag    : 'w',
-            encoding: 'utf8'
-        }
 
-    );
+    try {
+        fs.writeFileSync(
+            outputDirectory + '/statistics.json',
+            JSON.stringify(statistics),
+            {
+                flag    : 'w',
+                encoding: 'utf8'
+            }
+
+        );
+    } catch(err) {
+        console.error(err);
+    }
 }
 
 function upperCaseFirst(string) {
