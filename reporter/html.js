@@ -92,7 +92,6 @@ function reportResults(results, url) {
     var warningCount = 0;
     var noticeCount  = 0;
 
-    console.dir(results);
     results[0].issues.forEach(
         function(result, index) {
             if (true === /Principle.+Guideline/.test(result.code)) {
@@ -118,7 +117,7 @@ function reportResults(results, url) {
     );
 
     noteCodes = Object.keys(noteCodes);
-
+    console.dir(noteCodes);
     var total             = Math.max(errorCount + warningCount + noticeCount, 1);
     var errorPercentage   = (errorCount * 100) / total;
     var warningPercentage = (warningCount * 100) / total;
