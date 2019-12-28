@@ -34,6 +34,7 @@ var _      = require('underscore');
 var crypto = require('crypto');
 var fs     = require('fs');
 var mkdirp = require('mkdirp');
+var Logger = require('../lib/logger');
 
 module.exports = {
     config : config,
@@ -46,6 +47,7 @@ module.exports = {
 var outputDirectory = null;
 var indexHtmlStream = null;
 var statistics      = [];
+var logger = new Logger();
 
 function emptyFunction() {}
 
@@ -81,7 +83,7 @@ function config(options) {
 }
 
 function reportError(message) {
-    console.error(message);
+    logger.write(logger.colorize.red(message));
 }
 
 function reportResults(results, url) {
@@ -166,7 +168,8 @@ function reportResults(results, url) {
             }
         );
     } catch(err) {
-        console.error(err);
+        logger.write(logger.colorize.red(outputDirectory + '/' + hash + '.html'));
+        logger.write(logger.colorize.red(err));
     }
 
     indexHtmlStream.write(indexReportDotHtml(options));
@@ -182,7 +185,8 @@ function reportResults(results, url) {
 
         );
     } catch(err) {
-        console.error(err);
+        logger.write(logger.colorize.red(outputDirectory + '/statistics.json'));
+        logger.write(logger.colorize.red(err));
     }
 }
 
