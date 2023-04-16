@@ -118,6 +118,10 @@ program
         '--ignore-robots-txt',
         'Ignore robots.txt file.'
     )
+    .option(
+        '--customHeaders',
+        'custom headers - passthrough to node simple crawler'
+    )
     .parse(process.argv);
 
 if (false === a11ym.start(program.opts(), program.args)) {
