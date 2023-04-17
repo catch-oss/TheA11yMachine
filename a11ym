@@ -119,7 +119,7 @@ program
         'Ignore robots.txt file.'
     )
     .option(
-        '--custom-headers',
+        '--custom-headers <json>',
         'custom headers - passthrough to node simple crawler'
     )
     .parse(process.argv);
