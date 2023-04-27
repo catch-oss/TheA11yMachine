@@ -39,8 +39,8 @@ var Logger = require('../lib/logger');
 module.exports = {
     config : config,
     error  : reportError,
-    debug  : emptyFunction,
-    info   : emptyFunction,
+    debug  : console.log,
+    info   : console.log,
     results: reportResults
 };
 
