@@ -39,8 +39,8 @@ var Logger = require('../lib/logger');
 module.exports = {
     config : config,
     error  : reportError,
-    debug  : console.log,
-    info   : console.log,
+    debug  : debugLogger,
+    info   : infoLogger,
     results: reportResults
 };
 
@@ -48,12 +48,33 @@ var outputDirectory = null;
 var indexHtmlStream = null;
 var statistics      = [];
 var logger = new Logger();
+var logInfo = false;
+var logDebug = false;
 
-function emptyFunction() {}
+function debugLogger() {
+    if (logInfo) {
+        console.log(...arguments);
+    }
+}
+
+function infoLogger() {
+    if (logDebug) {
+        console.log(...arguments);
+    }
+}
 
 function config(options) {
+
     if (!options.outputDirectory) {
         throw "The `html` reporter must have a `outputDirectory` option.";
+    }
+
+    if (options.logInfo) {
+        logInfo = true;
+    }
+
+    if (options.logDebug) {
+        logDebug = true;
     }
 
     outputDirectory = options.outputDirectory;
