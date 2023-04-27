@@ -119,6 +119,10 @@ program
         'Ignore robots.txt file.'
     )
     .option(
+      '--debug',
+      'enables debug output'
+    )
+    .option(
         '--custom-headers <json>',
         'custom headers - passthrough to node simple crawler'
     )
