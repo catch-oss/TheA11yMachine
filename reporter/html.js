@@ -219,15 +219,15 @@ function upperCaseFirst(string) {
 }
 
 function isError(result) {
-    return (result.type === 'error');
+    return (result.level === 'error');
 }
 
 function isNotice(result) {
-    return (result.type === 'notice');
+    return (result.level === 'notice');
 }
 
 function isWarning(result) {
-    return (result.type === 'warning');
+    return (result.level === 'warning');
 }
 
 // Polyfill from
