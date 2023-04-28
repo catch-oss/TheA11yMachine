@@ -153,6 +153,8 @@ function reportResults(results, url) {
         fs.readFileSync(__dirname + '/../view/reports/index-report.html', {encoding: 'utf-8'})
     );
 
+    console.log('Writing: ./' + hash + '.html');
+
     var options = {
         url              : url,
         reportUrl        : './' + hash + '.html',
@@ -189,6 +191,7 @@ function reportResults(results, url) {
             }
         );
     } catch(err) {
+        console.error(err);
         logger.write(logger.colorize.red(outputDirectory + '/' + hash + '.html'));
         logger.write(logger.colorize.red(err));
     }
@@ -203,9 +206,9 @@ function reportResults(results, url) {
                 flag    : 'w',
                 encoding: 'utf8'
             }
-
         );
     } catch(err) {
+        console.error(err);
         logger.write(logger.colorize.red(outputDirectory + '/statistics.json'));
         logger.write(logger.colorize.red(err));
     }
