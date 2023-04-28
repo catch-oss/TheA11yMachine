@@ -115,7 +115,7 @@ function reportResults(results, url) {
     var warningCount = 0;
     var noticeCount  = 0;
 
-    results[0].issues.forEach(
+    results.forEach(
         function(result, index) {
             if (true === /Principle.+Guideline/.test(result.code)) {
                 result.noteCodes = result.code.split('.')[4].split(',');
@@ -153,8 +153,6 @@ function reportResults(results, url) {
         fs.readFileSync(__dirname + '/../view/reports/index-report.html', {encoding: 'utf-8'})
     );
 
-    console.log('Writing: ./' + hash + '.html');
-
     var options = {
         url              : url,
         reportUrl        : './' + hash + '.html',
@@ -165,7 +163,7 @@ function reportResults(results, url) {
         warningPercentage: warningPercentage,
         noticeCount      : noticeCount,
         noticePercentage : noticePercentage,
-        results          : results[0],
+        results          : results,
         noteCodes        : noteCodes,
         css              : {
             common: fs.readFileSync(__dirname + '/../view/common.css', {encoding: 'utf-8'})
@@ -191,7 +189,7 @@ function reportResults(results, url) {
             }
         );
     } catch(err) {
-        console.error(err);
+        console.log(err);
         logger.write(logger.colorize.red(outputDirectory + '/' + hash + '.html'));
         logger.write(logger.colorize.red(err));
     }
@@ -208,7 +206,7 @@ function reportResults(results, url) {
             }
         );
     } catch(err) {
-        console.error(err);
+        console.log(err);
         logger.write(logger.colorize.red(outputDirectory + '/statistics.json'));
         logger.write(logger.colorize.red(err));
     }
