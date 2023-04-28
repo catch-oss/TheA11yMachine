@@ -170,8 +170,6 @@ function reportResults(results, url) {
         }
     };
 
-    console.log(results);
-
     statistics.push({
         url         : url,
         hash        : hash,
