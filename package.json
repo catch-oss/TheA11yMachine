@@ -20,18 +20,17 @@
   "homepage": "https://github.com/liip/TheA11yMachine#readme",
   "main": "./lib/a11ym.js",
   "dependencies": {
-    "html_codesniffer": "^2.4.1",
     "async": "^3.1.0",
     "chalk": "^3.0.0",
     "commander": "^4.0.1",
     "get-installed-path": "^4.0.8",
     "glob": "^7.1.6",
+    "html_codesniffer": "^2.4.1",
     "js-yaml": "^3.13.1",
     "merge": "^2.1.1",
     "mkdirp": "^0.5.1",
     "open": "7.0.0",
-    "pa11y": "^6.2.3",
-    "phantomjs-prebuilt": "^2.1.16",
+    "pa11y": "^9.0.0",
     "process": "^0.11.10",
     "simplecrawler": "^1.1.8",
     "underscore": "^1.9.1"
@@ -43,5 +42,27 @@
     "a11ym": "./a11ym",
     "a11ym-dashboard": "./a11ym-dashboard",
     "a11ym-sniffers": "./a11ym-sniffers"
+  },
+  "devDependencies": {
+    "jest": "^30.1.3",
+    "supertest": "^7.1.4"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:unit": "jest test/lib",
+    "test:integration": "jest test/integration",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testTimeout": 30000,
+    "collectCoverageFrom": [
+      "lib/**/*.js",
+      "!lib/**/*.test.js",
+      "!**/node_modules/**"
+    ],
+    "coverageDirectory": "coverage",
+    "coverageReporters": ["text", "lcov", "html"]
   }
 }
