@@ -24,6 +24,12 @@ afterEach(() => {
   }
 });
 
+// Global cleanup to prevent Jest hanging
+afterAll(async () => {
+  // Allow any pending async operations to complete
+  await new Promise(resolve => setTimeout(resolve, 100));
+});
+
 // Global test utilities
 global.testUtils = {
   // Helper to create test HTML content

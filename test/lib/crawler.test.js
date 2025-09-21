@@ -13,6 +13,8 @@ describe('Crawler', () => {
             const crawlerInstance = new Crawler(options);
             expect(typeof crawlerInstance).toBe('object');
             expect(typeof crawlerInstance.start).toBe('function');
+            expect(typeof crawlerInstance.add).toBe('function');
+            expect(typeof crawlerInstance.stop).toBe('function');
         });
 
         test('should handle different URL formats', () => {
@@ -23,6 +25,9 @@ describe('Crawler', () => {
             
             const crawlerInstance = new Crawler(httpsUrl);
             expect(typeof crawlerInstance).toBe('object');
+            expect(typeof crawlerInstance.start).toBe('function');
+            expect(typeof crawlerInstance.add).toBe('function');
+            expect(typeof crawlerInstance.stop).toBe('function');
         });
 
         test('should configure depth limits', () => {
