@@ -1,4 +1,4 @@
-const crawler = require('../../lib/crawler');
+const Crawler = require('../../lib/crawler');
 
 describe('Crawler', () => {
     describe('createCrawler', () => {
@@ -10,7 +10,7 @@ describe('Crawler', () => {
                 timeout: 30000
             };
             
-            const crawlerInstance = crawler(options);
+            const crawlerInstance = new Crawler(options);
             expect(typeof crawlerInstance).toBe('object');
             expect(typeof crawlerInstance.start).toBe('function');
         });
@@ -21,7 +21,7 @@ describe('Crawler', () => {
                 depth: 1
             };
             
-            const crawlerInstance = crawler(httpsUrl);
+            const crawlerInstance = new Crawler(httpsUrl);
             expect(typeof crawlerInstance).toBe('object');
         });
 
@@ -32,7 +32,7 @@ describe('Crawler', () => {
                 checkSubdomains: true
             };
             
-            const crawlerInstance = crawler(options);
+            const crawlerInstance = new Crawler(options);
             expect(typeof crawlerInstance).toBe('object');
         });
 
@@ -43,7 +43,7 @@ describe('Crawler', () => {
                 checkSubdomains: true
             };
             
-            const crawlerInstance = crawler(withSubdomains);
+            const crawlerInstance = new Crawler(withSubdomains);
             expect(typeof crawlerInstance).toBe('object');
         });
 
@@ -54,7 +54,7 @@ describe('Crawler', () => {
                 filterByUrl: ['**/admin/**', '**/private/**']
             };
             
-            const crawlerInstance = crawler(options);
+            const crawlerInstance = new Crawler(options);
             expect(typeof crawlerInstance).toBe('object');
         });
     });
@@ -70,7 +70,7 @@ describe('Crawler', () => {
             
             validUrls.forEach(url => {
                 const options = { url, depth: 1 };
-                const crawlerInstance = crawler(options);
+                const crawlerInstance = new Crawler(options);
                 expect(typeof crawlerInstance).toBe('object');
             });
         });

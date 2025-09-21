@@ -5,7 +5,8 @@ describe('Tester', () => {
         test('should create a tester with default options', () => {
             const options = {
                 standards: 'WCAG2AA',
-                sniffers: 'resource/sniffers.js'
+                sniffers: require('path').join(__dirname, '../../resource/sniffers.js'),
+                report: 'cli'
             };
             
             const testInstance = tester(options);
@@ -15,7 +16,8 @@ describe('Tester', () => {
         test('should handle HTML standard option', () => {
             const options = {
                 standards: 'HTML',
-                sniffers: 'resource/sniffers.js'
+                sniffers: require('path').join(__dirname, '../../resource/sniffers.js'),
+                report: 'cli'
             };
             
             const testInstance = tester(options);
@@ -25,7 +27,8 @@ describe('Tester', () => {
         test('should handle combined standards', () => {
             const options = {
                 standards: 'WCAG2AA,HTML',
-                sniffers: 'resource/sniffers.js'
+                sniffers: require('path').join(__dirname, '../../resource/sniffers.js'),
+                report: 'cli'
             };
             
             const testInstance = tester(options);
@@ -35,7 +38,8 @@ describe('Tester', () => {
         test('should reject invalid standards', () => {
             const options = {
                 standards: 'INVALID_STANDARD',
-                sniffers: 'resource/sniffers.js'
+                sniffers: require('path').join(__dirname, '../../resource/sniffers.js'),
+                report: 'cli'
             };
             
             expect(() => {
@@ -46,7 +50,8 @@ describe('Tester', () => {
         test('should configure authentication headers when provided', () => {
             const options = {
                 standards: 'WCAG2AA',
-                sniffers: 'resource/sniffers.js',
+                sniffers: require('path').join(__dirname, '../../resource/sniffers.js'),
+                report: 'cli',
                 httpAuthUser: 'testuser',
                 httpAuthPassword: 'testpass'
             };
@@ -60,7 +65,8 @@ describe('Tester', () => {
         test('should map error levels correctly', () => {
             const options = {
                 standards: 'WCAG2AA',
-                sniffers: 'resource/sniffers.js'
+                sniffers: require('path').join(__dirname, '../../resource/sniffers.js'),
+                report: 'cli'
             };
             
             // This tests the internal error level mapping
