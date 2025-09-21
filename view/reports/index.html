@@ -88,21 +88,20 @@
 
     function sort(name) {
         var reports = document.querySelectorAll('.report');
-        var getReportScore = function (resultIndex) {
-            return +reports.item(resultIndex).getAttribute('data-' + name + '-count');
-        };
 
         document.querySelector('#reports').innerHTML =
-            Object
-                .keys(reports)
+            Array
+                .from(reports)
                 .sort(
                     function (a, b) {
-                        return getReportScore(a) < getReportScore(b) ? 1 : -1;
+                        var aScore = +a.getAttribute('data-' + name + '-count');
+                        var bScore = +b.getAttribute('data-' + name + '-count');
+                        return bScore - aScore;
                     }
                 )
                 .map(
-                    function (i) {
-                        return reports.item(i).outerHTML;
+                    function (report) {
+                        return report.outerHTML;
                     }
                 )
                 .join('\n');

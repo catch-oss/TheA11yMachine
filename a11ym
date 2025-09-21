@@ -79,7 +79,7 @@ program
     )
     .option(
         '-s, --standards <standards>',
-        'Standard to use: `WCAG2A`, `WCAG2AA` (default), ` WCAG2AAA`, `Section508`, `HTML` or your own (see `--sniffers`). `HTML` can be combined with any other by a comma.'
+        'Standard to use: `WCAG2A`, `WCAG2AA` (default), `WCAG2AAA`, `Section508`, `HTML` or your own (see `--sniffers`). `HTML` can be combined with any other by a comma. Note: WCAG 2.1 & 2.2 rules are included when using axe runner.'
     )
     .option(
         '-S, --sniffers <sniffers>',
