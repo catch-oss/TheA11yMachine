@@ -39,7 +39,7 @@ var glob    = require('glob');
 var http    = require('http');
 var open    = require('open');
 var path    = require('path');
-var program = require('commander');
+var { program } = require('commander');
 
 // Define all the options, with their description and default value.
 program
@@ -68,8 +68,11 @@ program
     )
     .parse(process.argv);
 
+// Get parsed options
+const options = program.opts();
+
 // No address and port to compute? Then exit.
-if (!program.root) {
+if (!options.root) {
     program.help();
     process.exit(2);
 }
@@ -93,7 +96,7 @@ function computeAllStatistics() {
     var stats = [];
 
     glob
-        .sync(program.root + '/statistics.json')
+        .sync(options.root + '/statistics.json')
         .forEach(
             function (file) {
                 stats.push(
@@ -127,7 +130,7 @@ function computeAllStatistics() {
 }
 
 // Create an HTTP server.
-if (undefined === program.staticOutput) {
+if (undefined === options.staticOutput) {
     var server = http.createServer(
         new function () {
             var indexRegex  = /^\/$/;
@@ -142,8 +145,8 @@ if (undefined === program.staticOutput) {
 
                     response.end(computeIndex());
                 } else if (matches = url.pathname.match(reportRegex)) {
-                    // var index = program.root + '/' + matches[1] + '/' + matches[2];
-                    var index = program.root + '/' + matches[2];
+                    // var index = options.root + '/' + matches[1] + '/' + matches[2];
+                    var index = options.root + '/' + matches[2];
                     console.log(index);
 
                     fs.access(
@@ -170,17 +173,17 @@ if (undefined === program.staticOutput) {
     );
 
     // Listen!
-    server.listen(program.port, program.address);
+    server.listen(options.port, options.address);
 
-    console.log('Server is listening on ' + program.address + ':' + program.port + '!');
+    console.log('Server is listening on ' + options.address + ':' + options.port + '!');
 
-    if (program.open) {
-        open('http://' + program.address + ':' + program.port);
+    if (options.open) {
+        open('http://' + options.address + ':' + options.port);
     }
 }
 // Generate static files.
 else {
-    var dashboardIndexPath = program.root + '/index.html';
+    var dashboardIndexPath = options.root + '/index.html';
     var dashboardIndex     = fs.createWriteStream(
         dashboardIndexPath,
         {
@@ -192,7 +195,7 @@ else {
 
     console.log('Dashboard generated!');
 
-    if (program.open) {
+    if (options.open) {
         open(dashboardIndexPath);
     }
 }
