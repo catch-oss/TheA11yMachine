@@ -33,7 +33,7 @@
  */
 
 var a11ym   = require('./lib/a11ym');
-var program = require('commander');
+var { program } = require('commander');
 
 // Define all the options, with their description and default value.
 program
