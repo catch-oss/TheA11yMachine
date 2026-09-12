@@ -1,4 +1,4 @@
-FROM node:25
+FROM node:26
 
 ENV NPM_CONFIG_LOGLEVEL=warn \
     NPM_CONFIG_PROGRESS=false \
